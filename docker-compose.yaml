@@ -2,7 +2,9 @@ version: "3"
 services:
   nginx:
     build: ./src
-    volumes: ['.:/app']
+    volumes:
+     - '.:/app'
+     - '/var/video-records:/usr/local/video-records'
     ports:
       - '8080:8080'
       - '1935:1935'
