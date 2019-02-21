@@ -15,9 +15,9 @@ RUN set -xe \
 	&& mkdir /usr/local/video \
 	&& mkdir /var/log/nginx \
 	&& mkdir /usr/local/video-records \
-	&& chmod 777 -R -f /usr/local/video-records \
+	&& chmod -R -f 777 /usr/local/video-records \
 	&& chown -R -f www-data:www-data /usr/local/video \
-	&& chmod 777 -R -f /usr/local/video
+	&& chmod -R -f 777 /usr/local/video
 
 EXPOSE 8080
 EXPOSE 1935

@@ -10,9 +10,15 @@ services:
       - '1935:1935'
     tty: true
     stdin_open: true
+    networks:
+      - project_w
   web:
     build: ./server
     ports: ['5000:5000']
-    volumes: ['.:/app']
+    volumes:
+     - '.:/app'
+     - '/var/video-records:/var/video-records'
     tty: true
     stdin_open: true
+    networks:
+      - projectw
