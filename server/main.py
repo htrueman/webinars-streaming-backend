@@ -25,14 +25,14 @@ def stream_action(action):
     user_id = request.form.get('user_id')
 
     if action == 'on_publish':
-        r = requests.post('http://django-server-domain/check-publish-stream-allowed',
+        r = requests.post('http://django:8000/check-publish-stream-allowed',
                           data={'user_id': user_id})
         if r.status_code != 200:
             return bad_response
     elif action == 'on_publish_done':
         return bad_response
     elif action == 'on_play':
-        r = requests.post('http://django-server-domain/check-play-stream-allowed',
+        r = requests.post('http://django:8000/check-play-stream-allowed',
                           data={'user_id': user_id})
         if r.status_code != 200:
             return bad_response
