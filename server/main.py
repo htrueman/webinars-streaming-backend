@@ -23,17 +23,19 @@ def stream_action(action):
     bad_response = Response(status=400)
     response = Response(status=201)
     user_id = request.form.get('user_id')
+    slug = request.form.get('name')
+    print(user_id, slug)
 
     if action == 'on_publish':
-        r = requests.post('http://django:8000/check-publish-stream-allowed',
-                          data={'user_id': user_id})
+        r = requests.post('http://django:8000/api/v1/projects/check_publish_stream_permission/',
+                          data={'user_id': user_id, 'slug': slug})
         if r.status_code != 200:
             return bad_response
     elif action == 'on_publish_done':
         return bad_response
     elif action == 'on_play':
-        r = requests.post('http://django:8000/check-play-stream-allowed',
-                          data={'user_id': user_id})
+        r = requests.post('http://django:8000/api/v1/projects/check_play_stream_permission/',
+                          data={'user_id': user_id, 'slug': slug})
         if r.status_code != 200:
             return bad_response
 
